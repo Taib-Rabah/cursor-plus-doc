@@ -1,0 +1,79 @@
+---
+title: Insert
+description: Insert text at specific positions
+---
+
+import { Collapsible } from "@/components/ui";
+import data from "@/data.ts";
+
+<Callout className="mt-0">
+
+Similar to the move commands but to insert text.
+
+</Callout>
+
+## Available commands
+
+| Name            | id                                                       | description                                     |
+| --------------- | -------------------------------------------------------- | ----------------------------------------------- |
+| Line Start      | <CopyText text="cursorPlus.insert.lineStart" code />     | Insert at start of line                         |
+| Up Line Start   | <CopyText text="cursorPlus.insert.upLineStart" code />   | └─ in previous line                             |
+| Down Line Start | <CopyText text="cursorPlus.insert.downLineStart" code /> | └─ in next line                                 |
+| Text Start      | <CopyText text="cursorPlus.insert.textStart" code />     | Insert before first non-whitespace character    |
+| Up Text Start   | <CopyText text="cursorPlus.insert.upTextStart" code />   | └─ in previous line                             |
+| Down Text Start | <CopyText text="cursorPlus.insert.downTextStart" code /> | └─ in next line                                 |
+| Text End        | <CopyText text="cursorPlus.insert.textEnd" code />       | Insert after last non-whitespace character      |
+| Up Text End     | <CopyText text="cursorPlus.insert.upTextEnd" code />     | └─ in previous line                             |
+| Down Text End   | <CopyText text="cursorPlus.insert.downTextEnd" code />   | └─ in next line                                 |
+| Line End        | <CopyText text="cursorPlus.insert.lineEnd" code />       | Insert at end of line                           |
+| Up Line End     | <CopyText text="cursorPlus.insert.upLineEnd" code />     | └─ in previous line                             |
+| Down Line End   | <CopyText text="cursorPlus.insert.downLineEnd" code />   | └─ in next line                                 |
+| Wrapper         | <CopyText text="cursorPlus.insert.wrapper" code />       | Choose an insert command from a quick-pick menu |
+
+<Callout title="Wrapper command?">
+
+Learn more in the [Wrapper command](/docs/commands/wrapper) documentation.
+
+</Callout>
+
+## Args
+
+Each insert command (including the wrapper) takes these arguments:
+
+| key         | type                                                                                                                                                                                                                                   | default | description                                 |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----: | ------------------------------------------- |
+| text        | `string`                                                                                                                                                                                                                               |    -    | Text to insert                              |
+| nextCommand | <Enum classNames={{ content: "!text-start" }} content={<ul className="flex flex-col gap-2">{["insertLineBreak", "insertLineBefore", "insertLineAfter"].map(item => <li key={item} aria-hidden><CopyText text={item} /></li>)}</ul>} /> |    -    | Command to execute after inserting the text |
+
+## Example
+
+### Keyboard shortcut
+
+Here is a command that inserts a semicolon at line end followed by a line break:
+
+```json title="keybindings.json"
+[
+  {
+    "key": "ctrl+shift+alt+;",
+    "command": "cursorPlus.insert.lineEnd",
+    "args": {
+      "text": ";",
+      "nextCommand": "insertLineBreak"
+    }
+  }
+]
+```
+
+### Video
+
+<VideoByKey vKey="insert" />
+
+<Callout>
+
+If you are interested on why to use `nextCommand` argument when `runCommands` command exists, please read [this section](/docs/why#next-command-arg).
+
+</Callout>
+
+## Configuration
+
+- [Auto Insert](/docs/config#auto-insert)

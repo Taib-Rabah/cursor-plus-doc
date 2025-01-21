@@ -1,0 +1,41 @@
+---
+title: Last
+description: Repeat the most recent executed CursorPlus command
+---
+
+## Overview
+
+- Key: <CopyText text="cursorPlus.last" code />
+- Description: Repeat the most recently executed CursorPlus command.
+
+<Callout type="warn" title="Works only with CursorPlus commands">
+
+Due to VS Code limitations, this command can only repeat CursorPlus commands.
+
+</Callout>
+
+## Args
+
+<Callout>
+
+This command takes no arguments.
+
+</Callout>
+
+## Examples
+
+### Keyboard shortcut
+
+```json title="keybindings.json"
+[
+  {
+    "key": "ctrl+shift+j",
+    "command": "cursorPlus.last",
+    "when": "editorTextFocus"
+  }
+]
+```
+
+## Configuration
+
+- [Saved Commands](/docs/config#saved-commands)

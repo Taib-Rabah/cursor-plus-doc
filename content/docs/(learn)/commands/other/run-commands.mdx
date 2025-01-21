@@ -1,0 +1,65 @@
+---
+title: Run Commands
+description: Execute multiple commands that can be repeated with the last command
+---
+
+## Overview
+
+- Key: <CopyText text="cursorPlus.runCommands" code />
+- Description: Run multiple commands in sequence, with the ability to repeat them using `cursorPlus.last`
+
+<Callout>
+
+This command is same as VS Code's built-in `runCommands` command. The only difference is that it can be repeated with `cursorPlus.last`.
+
+</Callout>
+
+## Args
+
+The command accepts these arguments:
+
+| key              | type                                          | default | description               |
+| ---------------- | --------------------------------------------- | ------- | ------------------------- |
+| commands         | array                                         | -       | Commands to execute       |
+| └─ \<array-item> | <Enum content={"string \| Command object"} /> | -       | Individual command to run |
+
+## Example
+
+### Keyboard shortcut
+
+```json title="keybindings.json"
+[
+  // Select content between first and last non-whitespace characters:
+  {
+    "key": "",
+    "command": "cursorPlus.runCommands",
+    "when": "editorTextFocus",
+    "args": {
+      "commands": ["cursorPlus.move.textStart", "cursorPlus.select.textEnd"]
+    }
+  },
+  // Delete trailing whitespaces in the current line without moving the cursor:
+  {
+    "key": "",
+    "command": "cursorPlus.runCommands",
+    "when": "editorTextFocus",
+    "args": {
+      "commands": [
+        "editor.action.setSelectionAnchor",
+        "cursorPlus.move.textEnd",
+        "cursorPlus.delete.lineEnd",
+        "editor.action.goToSelectionAnchor",
+        "editor.action.cancelSelectionAnchor"
+      ]
+    }
+  }
+]
+```
+
+## Configuration
+
+<Callout>
+
+This command has no configuration.
+
+</Callout>

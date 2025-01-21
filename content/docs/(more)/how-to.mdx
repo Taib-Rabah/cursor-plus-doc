@@ -1,0 +1,25 @@
+---
+title: How to
+description: How to do things the right way
+---
+
+## Avoid alias conflicts
+
+Consider the following aliases:
+
+```json title="settings.json"
+{
+  "cursorPlus.aliases": {
+    "line": "l",
+    "lineStart": "ls",
+    "lineEnd": "le"
+  }
+}
+```
+
+It's impossible to run `lineStart` and `lineEnd` using their aliases because as soon as you type `"l"`, the `line` command is triggered.
+
+To avoid conflicts:
+
+- Use single-character aliases
+- If not possible, add spaces or periods to make aliases unique

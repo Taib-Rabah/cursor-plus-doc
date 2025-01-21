@@ -1,0 +1,56 @@
+---
+title: Info
+---
+
+This section contains general information about CursorPlus.
+
+## Selection parts
+
+A selection is made of 2 parts:
+
+- Anchor: the fixed part of the selection.
+- Active: the moving part of the selection.
+
+![Selection parts example](https://utfs.io/f/YPzBeu2LFmG8hph3M1CS2OietudlUp9oDXxsa1Y3g6Z4JcAV)
+
+## Invalid config values
+
+<Callout>
+
+You will learn how invalid configuration values are treated.
+
+</Callout>
+
+Let's say you have the following configuration:
+
+```json title="settings.json"
+{
+  "cursorPlus.autoInsert": {
+    "hello-world": 123, // invalid key
+    "enabled": "yes", // invalid value type (expected: boolean)
+    "global": [""], // invalid item (string must be 1 or more characters)
+    "lineEnd": [",", ";", { "text": "1" }] // last item is invalid: missing "alias" key
+  },
+  "cursorPlus.aliases": {
+    "global": {
+      "lineStart": true //  invalid value type (Deep): (expected: string)
+    }
+  }
+}
+```
+
+Each invalid value will be ignored, and this is what the extension will get from your configuration:
+
+```json title="settings.json"
+{
+  "cursorPlus.autoInsert": {
+    "lineEnd": [",", ";"]
+  }
+}
+```
+
+<Callout type="warn">
+
+You won't see any error messages by CursorPlus telling you that the configuration is invalid. [VSCode IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) will be enough.
+
+</Callout>

@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "---Learn---",
+    "(learn)/index",
+    "(learn)/commands",
+    "(learn)/config",
+    "---More---",
+    "(more)/info",
+    "(more)/why",
+    "(more)/how-to"
+  ]
+}

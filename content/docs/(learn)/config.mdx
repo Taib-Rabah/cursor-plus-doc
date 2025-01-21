@@ -1,0 +1,187 @@
+---
+title: Config
+description: Learn how to configure CursorPlus.
+---
+
+import { InfoIcon } from "lucide-react";
+import data from "@/data";
+import { CodeBlock } from "fumadocs-ui/components/codeblock";
+
+<Callout className="mt-0">
+
+All CursorPlus configuration options are prefixed with `cursorPlus.`
+
+</Callout>
+
+## Reveal
+
+- Key: <CopyText text="cursorPlus.reveal" code />
+- Value: `object`
+- Description: Controls the reveal range when moving the cursor
+- Settings:
+
+| key       | value    | default | description                                                     |
+| --------- | -------- | :-----: | --------------------------------------------------------------- |
+| offset    | `number` |  `10`   | Minimum number of characters to show on the left                |
+| threshold | `number` |  `20`   | Show from line start if cursor position is less than this value |
+
+### Examples
+
+#### Settings
+
+```json title="settings.json"
+{
+  "cursorPlus.reveal": {
+    "offset": 10,
+    "threshold": 20
+  }
+}
+```
+
+#### Video
+
+<video src={data.video.reveal} controls />
+Notice that after running the `cursorPlus.move.textStart` command, the command reveals from the
+start of the line in the first 2 examples because the cursor position is less than 20 characters
+(threshold). While in the last example, it only reveals 10 characters (offset) to the left.
+
+## Auto Insert
+
+- Key: <CopyText text="cursorPlus.autoInsert" code />
+- Value: `object`
+- Description: Automatically insert text when you type an alias, without having to press `Enter`
+- Keys:
+
+| key                                                                                                                                                       | value                                                                                                                       | default | description                                                |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | :-----: | ---------------------------------------------------------- |
+| enabled                                                                                                                                                   | `boolean`                                                                                                                   | `true`  | Enable/disable auto-insert behavior                        |
+| escapeChar                                                                                                                                                | `string`                                                                                                                    |  `"/"`  | Start text with this character to prevent auto-insert      |
+| all                                                                                                                                                       | `array`                                                                                                                     |    -    | Array of texts to auto-insert for all insert commands      |
+| └─ \<array-item>                                                                                                                                          | <Enum content={<>string {"\|"} <Link href="#auto-insert-item-object" data-highlight>Auto insert item (object)</Link></>} /> |    -    | Text to auto-insert for all insert commands                |
+| <Enum showIcon content={<><Link href="/docs/commands/insert/#available-commands" data-highlight>Insert command</Link> in camelCase.</>}>\<Command></Enum> | `array`                                                                                                                     |    -    | Array of texts to auto-insert for specific insert commands |
+| └─ \<array-item>                                                                                                                                          | <Enum content={<>string {"\|"} <Link href="#auto-insert-item-object" data-highlight>Auto insert item (object)</Link></>} /> |    -    | Text to auto-insert for specific insert commands           |
+
+### Auto Insert Item (object)
+
+- key: No key (\<array-item>)
+- Value: `object`
+- Description: Define text and its alias for auto-insertion
+- Keys (all required):
+
+| key   | value    | default | description                             |
+| ----- | -------- | :-----: | --------------------------------------- |
+| text  | `string` |    -    | Text to insert when the alias is typed. |
+| alias | `string` |    -    | Text alias.                             |
+
+### Examples
+
+#### Settings
+
+```json title="settings.json"
+{
+  "cursorPlus.autoInsert": {
+    "enabled": true,
+    "escapeChar": "/",
+    "lineEnd": [",", ";"]
+  }
+}
+```
+
+## Aliases
+
+- Key: <CopyText text="cursorPlus.aliases" code />
+- Value: `object`
+- Description: Define aliases for commands to quickly select them from the quick-pick menu without searching or pressing Enter
+- Keys:
+
+| key                                                                                                                                               | value    | default | description                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | :-----: | ------------------------------------------------- |
+| global                                                                                                                                            | `object` |    -    | Define aliases for all commands in a single place |
+| └─ <Enum content={<><Link href="/docs/info/#main-groups" data-highlight>Main Groups</Link> commands in camelCase.</>}>\<Any-Group-Command></Enum> | `string` |    -    | Alias for a specific command                      |
+| <Enum content={<><Link href="/docs/info/#main-groups" data-highlight>Main Group</Link></>}>\<Group></Enum>                                        | `object` |    -    | Define aliases for commands in a specific group   |
+| └─ <Enum content={<>Group commands in camelCase.</>}>\<Group-Command></Enum>                                                                      | `string` |    -    | Alias for a specific command in the group         |
+
+<Callout type="warn" title="Aliases can conflict!">
+
+For more information, read [How to avoid aliases conflicts](/docs/how-to#avoid-aliases-conflicts).
+
+</Callout>
+
+### Examples
+
+#### Settings
+
+```json title="settings.json"
+{
+  "cursorPlus.aliases": {
+    "global": {
+      "lineStart": "ls",
+      "textStart": "ts",
+      "textEnd": "te",
+      "lineEnd": "le"
+      // ...
+    },
+    "move": {
+      "lineStart": "move-ls"
+      // ...
+    },
+    "delete": {
+      "entireLine": "el",
+      "upEntireLine": "uel",
+      "downEntireLine": "del"
+      // ...
+    }
+    // ...
+  }
+}
+```
+
+## Saved Commands
+
+- Key: <CopyText text="cursorPlus.savedCommands" code />
+- Description: Define which command groups to save for repeating with the <Link href="/docs/commands/other/last">`cursorPlus.last`</Link> command
+- Type:
+
+| key                      | value                                                                                                                           |       default        | description                                               |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | :------------------: | --------------------------------------------------------- |
+| cursorPlus.savedCommands | `array`                                                                                                                         | `["move", "select"]` | Array of command groups to save for repeating with `last` |
+| └─ \<array-items>        | <Enum content={<><Link href="/docs/info/#main-groups" data-highlight>Main Group</Link> {"\|"} <code>"runCommands"</code></>} /> |          -           | A command group name or "runCommands"                     |
+
+### Examples
+
+#### Settings
+
+```json title="settings.json"
+{
+  "cursorPlus.savedCommands": ["move", "insert", "delete", "runCommands"]
+}
+```
+
+## Hidden Messages
+
+- Key: <CopyText text="cursorPlus.hiddenMessages" code />
+- Description: Prevent the extension from showing certain messages
+- Type:
+
+| key                       | value                                  |        default        | description                               |
+| ------------------------- | -------------------------------------- | :-------------------: | ----------------------------------------- |
+| cursorPlus.hiddenMessages | `array`                                | `["cursorPlus.move"]` | Array of messages to prevent from showing |
+| └─ \<array-items>         | <Enum content={<>"config-error"</>} /> |           -           | A message name to prevent from showing    |
+
+### Hideable Messages
+
+#### config-error
+
+It's shown when the extension fails to parse the configuration.
+
+If you see it, it's usually my fault, because I remove any invalid values from the configuration to guarantee that the parse always succeeds.
+
+### Examples
+
+#### Settings
+
+```json title="settings.json"
+{
+  "cursorPlus.hiddenMessages": ["config-error"]
+}
+```

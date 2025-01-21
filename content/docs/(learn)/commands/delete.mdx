@@ -1,0 +1,77 @@
+---
+title: Delete
+description: Delete text at specific positions
+---
+
+<Callout className="mt-0">
+
+Similar to the select commands but to delete from [Selection.active](/docs/info#selection-parts) to the target position.
+
+</Callout>
+
+## Available commands
+
+| Name             | id                                                        | description                                        |
+| ---------------- | --------------------------------------------------------- | -------------------------------------------------- |
+| Line Start       | <CopyText text="cursorPlus.delete.lineStart" code />      | Delete to start of line                            |
+| Up Line Start    | <CopyText text="cursorPlus.delete.upLineStart" code />    | └─ of previous line                                |
+| Down Line Start  | <CopyText text="cursorPlus.delete.downLineStart" code />  | └─ of next line                                    |
+| Text Start       | <CopyText text="cursorPlus.delete.textStart" code />      | Delete to first non-whitespace character           |
+| Up Text Start    | <CopyText text="cursorPlus.delete.upTextStart" code />    | └─ in previous line                                |
+| Down Text Start  | <CopyText text="cursorPlus.delete.downTextStart" code />  | └─ in next line                                    |
+| Text End         | <CopyText text="cursorPlus.delete.textEnd" code />        | Delete to last non-whitespace character            |
+| Up Text End      | <CopyText text="cursorPlus.delete.upTextEnd" code />      | └─ in previous line                                |
+| Down Text End    | <CopyText text="cursorPlus.delete.downTextEnd" code />    | └─ in next line                                    |
+| Line End         | <CopyText text="cursorPlus.delete.lineEnd" code />        | Delete to end of line                              |
+| Up Line End      | <CopyText text="cursorPlus.delete.upLineEnd" code />      | └─ of previous line                                |
+| Down Line End    | <CopyText text="cursorPlus.delete.downLineEnd" code />    | └─ of next line                                    |
+| Line             | <CopyText text="cursorPlus.delete.line" code />           | Delete line content                                |
+| Up Line          | <CopyText text="cursorPlus.delete.upLine" code />         | └─ previous line                                   |
+| Down Line        | <CopyText text="cursorPlus.delete.downLine" code />       | └─ next line                                       |
+| Text             | <CopyText text="cursorPlus.delete.text" code />           | Delete from first non-whitespace to last character |
+| Up Text          | <CopyText text="cursorPlus.delete.upText" code />         | └─ on previous line                                |
+| Down Text        | <CopyText text="cursorPlus.delete.downText" code />       | └─ on next line                                    |
+| Entire Line      | <CopyText text="cursorPlus.delete.entireLine" code />     | Delete the entire line                             |
+| Up Entire Line   | <CopyText text="cursorPlus.delete.upEntireLine" code />   | └─ previous line                                   |
+| Down Entire Line | <CopyText text="cursorPlus.delete.downEntireLine" code /> | └─ next line                                       |
+| Wrapper          | <CopyText text="cursorPlus.delete.wrapper" code />        | Choose a delete command from a quick-pick menu     |
+
+<Callout title="Wrapper command?">
+
+Learn more in the [Wrapper command](/docs/commands/wrapper) documentation.
+
+</Callout>
+
+## Args
+
+<Callout>
+
+This command takes no arguments.
+
+</Callout>
+
+## Examples
+
+### Keyboard shortcut
+
+```json title="keybindings.json"
+[
+  {
+    "key": "ctrl+l ,",
+    "command": "cursorPlus.delete.text",
+    "when": "editorTextFocus"
+  }
+]
+```
+
+### Video
+
+<VideoByKey vKey="delete" />
+
+## Configuration
+
+<Callout>
+
+This command has no configuration.
+
+</Callout>

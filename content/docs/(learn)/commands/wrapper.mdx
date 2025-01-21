@@ -1,0 +1,77 @@
+---
+title: Wrapper
+description: Access all commands in a category through a single command
+---
+
+import data from "@/data.ts";
+import { ImageZoom } from "fumadocs-ui/components/image-zoom";
+
+## Overview
+
+Each main group has a `wrapper` command that wraps all its commands into a single command.
+
+Key: `cursorPlus.<group>.wrapper`
+
+<Callout>
+
+This page uses `cursorPlus.move.wrapper` as an example, but the concepts apply to all wrapper commands.
+
+</Callout>
+
+## Examples
+
+### Keyboard shortcut
+
+Instead of multiple shortcuts:
+
+```json title="keybindings.json"
+[
+  {
+    "key": "ctrl+j j",
+    "command": "cursorPlus.move.lineStart",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+j k",
+    "command": "cursorPlus.move.textStart",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+j l",
+    "command": "cursorPlus.move.textEnd",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+j ;",
+    "command": "cursorPlus.move.lineEnd",
+    "when": "editorTextFocus"
+  }
+  // ...
+]
+```
+
+You can use a single wrapper shortcut:
+
+```json title="keybindings.json"
+[
+  {
+    "key": "ctrl+j w",
+    "command": "cursorPlus.move.wrapper",
+    "when": "editorTextFocus"
+  }
+]
+```
+
+### Image
+
+The wrapper command shows a menu like this:
+
+![wrapper command menu](https://utfs.io/f/YPzBeu2LFmG8U1sIyghVdUhBFArE38owSHbQxOCymvZR4c2z)
+
+Each command can have an alias (shown next to its name) that you can type to quickly select it. Aliases can be any length, not just single characters.
+
+To use this feature, you need first to define your aliases.
+
+## Configuration
+
+- [Aliases](/docs/config#aliases)

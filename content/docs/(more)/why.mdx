@@ -1,0 +1,59 @@
+---
+title: Why
+description: Why certain features work the way they do
+---
+
+import data from "@/data";
+
+<Callout className="mt-0">
+
+You will know why certain features are useful and why they work they way they do.
+
+</Callout>
+
+## nextCommand arg [#next-command-arg]
+
+<Callout>
+
+You will learn why the `nextCommand` argument exists.
+
+</Callout>
+
+- Location: Configuration
+- Key: `cursorPlus.<insert-command>.args.nextCommand`
+- Description: Argument to run a command after inserting text
+
+
+### Examples
+
+Here's how to create a custom command that inserts a semicolon at line end, followed by a line break without using `nextCommand` argument.
+
+#### Keyboard shortcut
+
+```json title="keybinding.json"
+[
+  {
+    "key": "ctrl+shift+alt+;",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        {
+          "command": "cursorPlus.insert.lineEnd",
+          "args": {
+            "text": ";"
+          }
+        },
+        "insertLineBreak",
+        "cursorDown",
+        "cursorLineEnd"
+      ]
+    }
+  }
+]
+```
+
+#### Video
+
+<VideoByKey vKey="nextCommandArg" />
+
+Notice that you need to press `ctrl+z` twice to undo - once for `insertLineBreak` and once for `cursorPlus.insert.lineEnd`

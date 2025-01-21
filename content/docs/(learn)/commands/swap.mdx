@@ -1,0 +1,54 @@
+---
+title: Swap
+description: Swap selections' text, lines, or just their direction
+---
+
+## Available commands
+
+| Name      | id                                                 | description                                                 |
+| --------- | -------------------------------------------------- | ----------------------------------------------------------- |
+| Text      | <CopyText text="cursorPlus.swap.text" code />      | Swap the text between selections                            |
+| Line      | <CopyText text="cursorPlus.swap.line" code />      | Swap entire lines between selections                        |
+| Line Text | <CopyText text="cursorPlus.swap.lineText" code />  | Swap lines starting from the first non-whitespace character |
+| Direction | <CopyText text="cursorPlus.swap.direction" code /> | Reverse the direction of selections                         |
+| Wrapper   | <CopyText text="cursorPlus.swap.wrapper" code />   | Choose a swap command from a quick-pick menu                |
+
+<Callout title="Wrapper command?">
+
+Learn more in the [Wrapper command](/docs/commands/wrapper) documentation.
+
+</Callout>
+
+## Args
+
+<Callout>
+
+This command takes no arguments.
+
+</Callout>
+
+## Examples
+
+### Keyboard shortcut
+
+```json title="keybindings.json"
+[
+  {
+    "key": "ctrl+j f",
+    "command": "cursorPlus.swap.text",
+    "when": "editorTextFocus"
+  }
+]
+```
+
+### Video
+
+<VideoByKey vKey="swap" />
+
+## Configuration
+
+<Callout>
+
+This command has no configuration.
+
+</Callout>

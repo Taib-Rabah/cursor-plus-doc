@@ -1,0 +1,67 @@
+---
+title: Move
+description: Move the cursor to locations unreachable by VS Code's built-in commands.
+---
+
+import { Callout } from "fumadocs-ui/components/callout";
+import data from "@/data";
+
+## Available commands
+
+<Callout title="Duplications!">
+
+Some of these commands already exist as built-in VS Code commands. They're included in CursorPlus to provide a complete set of commands in one place.
+
+</Callout>
+
+| Name            | id                                                     | description                                           |
+| --------------- | ------------------------------------------------------ | ----------------------------------------------------- |
+| Line Start      | <CopyText text="cursorPlus.move.lineStart" code />     | Move the cursor to the first character                |
+| Up Line Start   | <CopyText text="cursorPlus.move.upLineStart" code />   | └─ of the previous line                               |
+| Down Line Start | <CopyText text="cursorPlus.move.downLineStart" code /> | └─ of the next line                                   |
+| Text Start      | <CopyText text="cursorPlus.move.textStart" code />     | Move the cursor to the first non-whitespace character |
+| Up Text Start   | <CopyText text="cursorPlus.move.upTextStart" code />   | └─ of the previous line                               |
+| Down Text Start | <CopyText text="cursorPlus.move.downTextStart" code /> | └─ of the next line                                   |
+| Text End        | <CopyText text="cursorPlus.move.textEnd" code />       | Move the cursor to the last non-whitespace character  |
+| Up Text End     | <CopyText text="cursorPlus.move.upTextEnd" code />     | └─ of the previous line                               |
+| Down Text End   | <CopyText text="cursorPlus.move.downTextEnd" code />   | └─ of the next line                                   |
+| Line End        | <CopyText text="cursorPlus.move.lineEnd" code />       | Move the cursor to the last character                 |
+| Up Line End     | <CopyText text="cursorPlus.move.upLineEnd" code />     | └─ of the previous line                               |
+| Down Line End   | <CopyText text="cursorPlus.move.downLineEnd" code />   | └─ of the next line                                   |
+| Wrapper         | <CopyText text="cursorPlus.move.wrapper" code />       | Pick a move command to run.                           |
+
+<Callout title="Wrapper command?">
+
+Learn more in the [Wrapper command](/docs/commands/wrapper) documentation.
+
+</Callout>
+
+## Args
+
+<Callout>
+
+This command takes no arguments.
+
+</Callout>
+
+## Examples
+
+### Keyboard shortcut
+
+```json title="keybindings.json"
+[
+  {
+    "key": "ctrl+j k",
+    "command": "cursorPlus.move.textStart",
+    "when": "editorTextFocus"
+  }
+]
+```
+
+### Video
+
+<VideoByKey vKey="move" />
+
+## Configuration
+
+- [Reveal](/docs/config#reveal)

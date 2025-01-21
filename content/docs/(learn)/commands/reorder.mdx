@@ -1,0 +1,54 @@
+---
+title: Reorder
+description: Reorder selections' text, lines, or just their order
+---
+
+## Available commands
+
+| Name       | id                                                     | description                                                    |
+| ---------- | ------------------------------------------------------ | -------------------------------------------------------------- |
+| Text       | <CopyText text="cursorPlus.reorder.text" code />       | Reorder text within selections                                 |
+| Line       | <CopyText text="cursorPlus.reorder.line" code />       | Reorder lines containing selections                            |
+| Line Text  | <CopyText text="cursorPlus.reorder.lineText" code />   | Reorder lines starting from the first non-whitespace character |
+| Selections | <CopyText text="cursorPlus.reorder.selections" code /> | Reorder the selections themselves                              |
+| Wrapper    | <CopyText text="cursorPlus.reorder.wrapper" code />    | Choose a reorder command from a quick-pick menu                |
+
+<Callout title="Wrapper command?">
+
+Learn more in the [Wrapper command](/docs/commands/wrapper) documentation.
+
+</Callout>
+
+## Args
+
+<Callout>
+
+This command takes no arguments.
+
+</Callout>
+
+## Examples
+
+### Keyboard shortcut
+
+```json title="keybindings.json"
+[
+  {
+    "key": "",
+    "command": "cursorPlus.reorder.text",
+    "when": "editorTextFocus"
+  }
+]
+```
+
+### Video
+
+<VideoByKey vKey="reorder" />
+
+## Configuration
+
+<Callout>
+
+This command has no configuration.
+
+</Callout>
