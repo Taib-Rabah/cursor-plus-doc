@@ -1,4 +1,0 @@
-
-
-anchor → Example ← active
-active → Example ← anchor

@@ -8,7 +8,7 @@ export default function useLocalStorage<T>(key: string, initialValue: T): ReactS
     const item = window.localStorage.getItem(key);
     if (!item) return;
     setValue(JSON.parse(item));
-  }, []);
+  }, [key]);
 
   // Update local storage when the value changes
   // Note: This useEffect should be run after the initial value is set (previous useEffect)

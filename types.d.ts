@@ -1,1 +1,1 @@
-type ReactState<T> = [T, React.Dispatch<React.SetStateAction<T>>]; 
+type ReactState<T> = [T, React.Dispatch<React.SetStateAction<T>>];

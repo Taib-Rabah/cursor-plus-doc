@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from "fumadocs-ui/page";
 import { source } from "lib/source";
@@ -40,7 +42,6 @@ export default async function Page(props: { params: Promise<{ slug?: string[] }>
       article={{
         className: "max-w-[940px]",
       }}
-      
     >
       <DocsTitle className="group flex items-center">
         <Link href={page.url}>{page.data.title}</Link>

@@ -1,7 +1,7 @@
 import Plugin from "tailwindcss/plugin";
 import { createVariantHelpers } from "../_utils";
 
-const othersPlugin = Plugin(({ addUtilities, matchUtilities, addVariant, matchVariant, theme }) => {
+const othersPlugin = Plugin(({  matchUtilities, addVariant, matchVariant, theme }) => {
   const { addVariantWithPeerAndGroup, matchVariantWithPeerAndGroup } = createVariantHelpers({
     addVariant,
     matchVariant,
@@ -21,7 +21,7 @@ const othersPlugin = Plugin(({ addUtilities, matchUtilities, addVariant, matchVa
     animation: (value) => ({
       animation: value,
     }),
-    "easing": (value) => ({
+    easing: (value) => ({
       "animation-timing-function": value,
     }),
   });

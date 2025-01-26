@@ -12,7 +12,7 @@ export default function useRefs() {
       }
       linksRef.current[url] = el;
     },
-    []
+    [],
   );
 
   return { linksDivRef, linksRef, addLinkRef };

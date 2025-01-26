@@ -9,4 +9,3 @@ export * from "./useActiveLinkHighlight";
 
 export { default as useIsActive } from "./useIsActive";
 export * from "./useIsActive";
-

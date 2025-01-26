@@ -1,9 +1,8 @@
-import { cn } from "@/lib/utils";
 import Link from "fumadocs-core/link";
 import { TableOfContents, TOCItemType } from "fumadocs-core/server";
 import { depthTw } from "./data";
 import { useActiveAnchor, useActiveLinkHighlight, useRefs, useIsActive } from "./hooks";
-import { Arr } from "@trdev20/js-utils";
+import { cn } from "@/lib/utils";
 
 export type LinksProps = {
   toc: TableOfContents;

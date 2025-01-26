@@ -1,7 +1,7 @@
 import Plugin from "tailwindcss/plugin";
 
 const layoutPlugin = Plugin(
-  ({ addUtilities, matchUtilities, addComponents, matchComponents, theme }) => {
+  ({ addUtilities, addComponents, matchComponents, theme }) => {
     matchComponents(
       {
         wrapper: (width) => ({

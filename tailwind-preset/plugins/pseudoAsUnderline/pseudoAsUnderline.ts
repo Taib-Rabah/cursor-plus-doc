@@ -1,6 +1,6 @@
 import { type StringChoices, isOneOf } from "@trdev20/js-utils";
 import { twJoin } from "tailwind-merge";
-import { flattenTheme, generateObject, hexToRgb, isHex } from "../../utils";
+import { flattenTheme, generateObject } from "../../utils";
 import Plugin from "tailwindcss/plugin";
 import { getColorWithOpacity } from "../../utils/getColorWithOpacity";
 

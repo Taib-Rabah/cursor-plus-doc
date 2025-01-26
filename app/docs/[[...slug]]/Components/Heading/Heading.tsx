@@ -31,19 +31,20 @@ export default function Heading({ children, id, as, pageData }: HeadingProps) {
     { parents: [] as TOCItemType[], lastDepth: anchor?.depth ?? 0 },
   ).parents;
 
-  return createElement(as, {
-    id,
-    className: "group cursor-default flex items-center bb-2 pb-1",
-    "data-level": as,
-    children: (
-      <>
-        <Link href={`#${id}`} className="inline-flex items-center no-underline">
-          {children}
-        </Link>
-        <Breadcrumb parents={parents} pageData={pageData} />
-        <Separator />
-        <CopyUrl relativeUrl={pageData.url} id={id} />
-      </>
-    ),
-  });
+  return createElement(
+    as,
+    {
+      id,
+      className: "group cursor-default flex items-center bb-2 pb-1",
+      "data-level": as,
+    },
+    <>
+      <Link href={`#${id}`} className="inline-flex items-center no-underline">
+        {children}
+      </Link>
+      <Breadcrumb parents={parents} pageData={pageData} />
+      <Separator />
+      <CopyUrl relativeUrl={pageData.url} id={id} />
+    </>,
+  );
 }

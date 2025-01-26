@@ -5,14 +5,11 @@ import { depthTw } from "./data";
 import { useActiveAnchor, useActiveLinkHighlight, useRefs, useIsActive } from "./hooks";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useLocalStorage } from "@/hooks";
 import { useTocContext } from "../Provider";
-// import { Arr, isObject } from "@trdev20/js-utils";
 
 export type LinksProps = {
   toc: TableOfContents;
 };
-
 
 export default function Links({ toc }: LinksProps) {
   const [expanded, setExpanded] = useState<string[]>([]);
@@ -20,7 +17,7 @@ export default function Links({ toc }: LinksProps) {
 
   const {
     tocAutoExpandState: [tocAutoExpand],
-    tocExpandDepthState: [tocExpandDepth, setTocExpandDepth],
+    tocExpandDepthState: [tocExpandDepth],
   } = useTocContext();
 
   const { linksDivRef, linksRef, addLinkRef } = useRefs();
@@ -33,11 +30,13 @@ export default function Links({ toc }: LinksProps) {
 
   useEffect(() => {
     if (tocAutoExpand) {
-      setManuallyExpanded(toc.filter((item) => item.depth === tocExpandDepth).map((item) => item.url));
+      setManuallyExpanded(
+        toc.filter((item) => item.depth === tocExpandDepth).map((item) => item.url),
+      );
     } else {
       setManuallyExpanded([]);
     }
-  }, [tocAutoExpand, toc]);
+  }, [tocAutoExpand, toc, tocExpandDepth]);
 
   useEffect(() => {
     if (!activeAnchor) return;
@@ -52,11 +51,13 @@ export default function Links({ toc }: LinksProps) {
       return;
     }
 
-    const parent = toc.slice(0, toc.indexOf(activeAnchor)).findLast((item) => item.depth === tocExpandDepth);
+    const parent = toc
+      .slice(0, toc.indexOf(activeAnchor))
+      .findLast((item) => item.depth === tocExpandDepth);
     if (!parent) return;
 
     setExpanded([parent.url]);
-  }, [activeAnchor]);
+  }, [activeAnchor, toc, tocExpandDepth]);
 
   const links = toc.reduce(
     (data, curr) => {
@@ -93,7 +94,7 @@ export default function Links({ toc }: LinksProps) {
   };
 
   // links.filter(item => "parent" in item).map(item => item.)
-  
+
   return (
     <div
       ref={linksDivRef}
@@ -140,17 +141,17 @@ export default function Links({ toc }: LinksProps) {
                 {item.children.length ? (
                   <button
                     disabled={expanded.includes(item.parent.url)}
-                    className="group/button disabled:cursor-not-allowed group-data-expanded:rotate-180 px-1 duration-200"
+                    className="group/button px-1 duration-200 disabled:cursor-not-allowed group-data-expanded:rotate-180"
                     onClick={expandHandler(item.parent.url)}
                   >
-                    <ChevronDown className="size-4 duration-200 group-disabled/button:text-white hover:text-white" />
+                    <ChevronDown className="size-4 duration-200 hover:text-white group-disabled/button:text-white" />
                     <span className="sr-only">Toggle menu</span>
                   </button>
                 ) : null}
               </div>
               {item.children.length ? (
-                <div className="group-data-expanded:grid-rows-[1fr] grid grid-rows-[0fr] duration-200">
-                  <div className="group-data-expanded:mt-3 flex flex-col gap-3 overflow-hidden duration-200">
+                <div className="grid grid-rows-[0fr] duration-200 group-data-expanded:grid-rows-[1fr]">
+                  <div className="flex flex-col gap-3 overflow-hidden duration-200 group-data-expanded:mt-3">
                     {item.children.map((item) => {
                       const isItemActive = isActive(item);
 

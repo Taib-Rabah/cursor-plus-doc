@@ -21,29 +21,23 @@ type FixObjectUpdate = {
 
 export const fixObject = (
   obj: Record<string, string>,
-  { updateKey, updateValue, updateKeyValue }: FixObjectUpdate
+  { updateKey, updateValue, updateKeyValue }: FixObjectUpdate,
 ) => {
   const result: Record<string, string> = {};
   for (const key in obj) {
     const value = obj[key]!;
-    const newKey = updateKey
-      ? updateKey(key)
-      : updateKeyValue
-      ? updateKeyValue(key)
-      : key;
+    const newKey = updateKey ? updateKey(key) : updateKeyValue ? updateKeyValue(key) : key;
     const newValue = updateValue
       ? updateValue(value)
       : updateKeyValue
-      ? updateKeyValue(value)
-      : value;
+        ? updateKeyValue(value)
+        : value;
     result[newKey] = newValue;
   }
   return result;
 };
 
-export const generateObject = (
-  params: GenerateValuesParams | GenerateValuesParams[]
-) => {
+export const generateObject = (params: GenerateValuesParams | GenerateValuesParams[]) => {
   const paramsArray = isArray(params) ? params : [params];
 
   let finalObj: Record<string, string> = {};
@@ -63,7 +57,11 @@ export const generateObject = (
       const [start, end, step = defaultStep] = range;
       for (let i = start; i <= end; i = +(i + step).toFixed(2)) {
         const key = updateKey ? updateKey(i) : updateKeyValue ? updateKeyValue(i) : i.toString();
-        const value = updateValue ? updateValue(i) : updateKeyValue ? updateKeyValue(i) : i.toString();
+        const value = updateValue
+          ? updateValue(i)
+          : updateKeyValue
+            ? updateKeyValue(i)
+            : i.toString();
         obj[key] = value;
         if (includeNegative) {
           obj[`-${key}`] = `-${value}`;

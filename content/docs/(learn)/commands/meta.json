@@ -1,13 +1,4 @@
 {
-  "pages": [
-    "move",
-    "insert",
-    "select",
-    "delete",
-    "swap",
-    "reorder",
-    "wrapper",
-    "other"
-  ],
+  "pages": ["move", "insert", "select", "delete", "swap", "reorder", "wrapper", "other"],
   "defaultOpen": true
 }

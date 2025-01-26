@@ -3,7 +3,7 @@ import { isHex } from "./validators";
 
 /**
  * If the color is a hex color, convert it to rgba
- * 
+ *
  * Otherwise, append the opacity variable to the color
  */
 

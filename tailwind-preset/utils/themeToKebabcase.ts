@@ -36,12 +36,7 @@ export const flattenTheme = (theme: Obj) => {
       if (key === "DEFAULT" && prefix === "") continue;
 
       const value = obj[key];
-      const newKey =
-        key === "DEFAULT"
-          ? prefix
-          : isEmptyString(prefix)
-          ? key
-          : `${prefix}-${key}`;
+      const newKey = key === "DEFAULT" ? prefix : isEmptyString(prefix) ? key : `${prefix}-${key}`;
 
       if (isObject(value)) {
         flatten(value, newKey);
@@ -55,4 +50,3 @@ export const flattenTheme = (theme: Obj) => {
 
   return flattened;
 };
-

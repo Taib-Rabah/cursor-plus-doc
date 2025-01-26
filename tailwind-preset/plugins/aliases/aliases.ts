@@ -1,7 +1,6 @@
 import Plugin from "tailwindcss/plugin";
 import { flattenTheme } from "../../utils/themeToKebabcase";
 import { processBorderColor } from "./utils";
-import { fixObject } from "@/tailwind-preset/utils";
 
 export const opacityToHexPart = (opacity: number) =>
   Math.round(opacity * 255)
@@ -38,13 +37,12 @@ const aliasesPlugin = Plugin(({ matchUtilities, theme }) => {
     {
       values: theme("borderWidth"),
       modifiers: borderColor,
-    }
+    },
   );
 
   matchUtilities(
     {
-      b: (borderColor, { modifier: opacity }) =>
-        processBorderColor("", borderColor, opacity),
+      b: (borderColor, { modifier: opacity }) => processBorderColor("", borderColor, opacity),
       bt: (borderTopColor, { modifier: opacity }) =>
         processBorderColor("top", borderTopColor, opacity),
       br: (borderRightColor, { modifier: opacity }) =>
@@ -57,7 +55,7 @@ const aliasesPlugin = Plugin(({ matchUtilities, theme }) => {
     {
       values: borderColor,
       modifiers: opacity,
-    }
+    },
   );
 
   matchUtilities(
@@ -68,7 +66,7 @@ const aliasesPlugin = Plugin(({ matchUtilities, theme }) => {
     },
     {
       values: opacity,
-    }
+    },
   );
 
   // Translate
@@ -89,7 +87,7 @@ const aliasesPlugin = Plugin(({ matchUtilities, theme }) => {
     {
       values: translate,
       supportsNegativeValues: true,
-    }
+    },
   );
 });
 

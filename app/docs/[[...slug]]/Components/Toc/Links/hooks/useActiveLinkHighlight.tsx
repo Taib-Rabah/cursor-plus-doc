@@ -20,11 +20,10 @@ export default function useActiveLinkHighlight({
     const activeLink = linksRef.current[activeAnchorId];
     if (!activeLink) return;
 
-    
     setTimeout(() => {
       const activeLinkRect = activeLink.getBoundingClientRect();
       const linksDivRect = linksDiv.getBoundingClientRect();
-      
+
       const y = activeLinkRect.top - linksDivRect.top;
       linksDiv.style.setProperty("--y", `${y}px`);
     }, 200);

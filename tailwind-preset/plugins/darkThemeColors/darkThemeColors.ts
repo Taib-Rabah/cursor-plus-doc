@@ -1,8 +1,7 @@
 import { getColorWithOpacity } from "../../utils/getColorWithOpacity";
-import { flattenTheme, hexToRgb, isHex } from "../../utils";
+import { flattenTheme } from "../../utils";
 import { isOneOf, keys } from "@trdev20/js-utils";
 import Plugin from "tailwindcss/plugin";
-import { CSSRuleObject } from "tailwindcss/types/config";
 
 const darkThemeColorsPlugin = Plugin(({ matchUtilities, matchComponents, theme }) => {
   const properties = {

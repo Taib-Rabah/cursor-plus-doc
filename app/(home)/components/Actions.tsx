@@ -11,7 +11,10 @@ export default function Actions() {
         </Link>
       </Button>
       <Button variant={"outline"} asChild>
-        <a target="_blank" href="https://marketplace.visualstudio.com/items?itemName=TRDev20.cursor-plus">
+        <a
+          target="_blank"
+          href="https://marketplace.visualstudio.com/items?itemName=TRDev20.cursor-plus"
+        >
           Install <DownloadIcon />
         </a>
       </Button>

@@ -1,12 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import Link from "fumadocs-core/link";
-import { TableOfContents, TOCItemType } from "fumadocs-core/server";
-import { useActiveAnchor, useActiveAnchors } from "fumadocs-core/toc";
-import { AlignLeftIcon } from "lucide-react";
-import { useCallback, useEffect, useRef } from "react";
-import { getParents } from "../utils";
+import { TableOfContents } from "fumadocs-core/server";
 import Header from "./Header";
 import Links from "./Links/Links";
 import TocProvider from "./Provider";

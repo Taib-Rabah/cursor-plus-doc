@@ -9,4 +9,3 @@ export const isHsl = (color: string) => {
 export const isRgb = (color: string) => {
   return /^rgba?\(.+\)$/.test(color.trim());
 };
-

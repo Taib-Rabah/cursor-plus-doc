@@ -36,7 +36,7 @@ export default function useIsActive({ activeAnchorId, activeAnchor, toc }: UseIs
         within: false,
       };
     },
-    [activeAnchorId],
+    [activeAnchorId, activeAnchor, toc],
   );
 
   return isActive;
